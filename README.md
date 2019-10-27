@@ -1,0 +1,1 @@
+# Projeto padrão Vagrant para LAMP
