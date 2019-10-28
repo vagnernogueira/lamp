@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     machine.vm.network "public_network", ip: "192.168.1.99"
     machine.vm.hostname = "lamp01"
     machine.vm.synced_folder ".", "/vagrant", SharedFoldersEnableSymlinksCreate: false
-    machine.vm.provision "shell", path: "provision.sh"
+    machine.vm.provision "shell", path: "provision/provision.sh"
     machine.vm.provider "virtualbox" do |vb|
       vb.gui = false
       vb.memory = "1024"
