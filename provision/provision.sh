@@ -23,12 +23,16 @@ mv composer.phar /usr/local/bin/composer
 echo "END 01<-"
 # vim /etc/php/7.3/apache2/php.ini
 # vim /etc/apache2/apache2.conf
+
+
 # <Directory "/var/www/html"> Change the AllowOverride None directive to AllowOverride All. 
 
 #
 apt-get install mariadb-server -y
 mysql -u root -t < /vagrant/provision/create_tables.sql
 mysql -u root -t < /vagrant/provision/provision.sql
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
+systemctl restart mariadb.service
 #
 cd /tmp
 wget -q https://files.phpmyadmin.net/phpMyAdmin/4.9.1/phpMyAdmin-4.9.1-all-languages.zip
